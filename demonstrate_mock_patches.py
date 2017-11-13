@@ -20,13 +20,13 @@ class MyClassA():
 class TestA(unittest.TestCase):
     """
     Example of how unittest.mock.patch can be used to replace the behaviour of
-    a method.
+    a class method.
     """
 
     def test_compute_with_patch_foo(self):
         """
-        Demonstrate patching a function within a module, and
-        specifying an alternate return value.
+        Demonstrate patching a class method and specifying an alternate 
+        return value.
         """
 
         print("\nrunning test_compute_with_patch...")

@@ -20,7 +20,7 @@ class MyClassA():
 class TestA(unittest.TestCase):
     """
     Example of how unittest.mock objects can be provided with a specification to
-    ensure that they only test attributes that actually exist.
+    ensure that they only test methods and attributes that actually exist.
     """
 
     @unittest.mock.patch('__main__.MyClassA')
@@ -45,9 +45,10 @@ class TestA(unittest.TestCase):
         Note the method 'foo3' does not exist in the specification.
         
         In this test case, we have passed the argument 'autospec=True' into the
-        function decorator. This automatically sets the mock object specication
-        to the class being replaced, i.e. we can only call methods/attributes
-        on the mock object that have a counterpart in the real object.
+        function decorator. This automatically sets the mock object 
+        specification to the class being replaced, i.e. we can only call 
+        methods/attributes on the mock object that have a counterpart in the 
+        real object.
         """
 
         a = MyClassA()

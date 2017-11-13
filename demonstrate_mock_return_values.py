@@ -21,7 +21,7 @@ class TestA(unittest.TestCase):
     """
     Example of how unittest.mock can be used to 're-assign' a class
     method (taking advantage of the fact that Python  functions  are
-    first-class objects) and specify a return value; effectively negates the
+    first-class objects) and specify a return value; effectively negating the
     need to actually compute the methods directly (which in some cases may be
     prohibitivey expensive).
 

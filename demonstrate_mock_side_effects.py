@@ -27,6 +27,9 @@ class TestA(unittest.TestCase):
 
     To simultaneously pass a side effect and a return value simply return the
     desired value from the side effect function (see example 3 below).
+    
+    Side effects can also be used to pass a list of arguments to the mocked 
+    method will be returned sequentially following each call (see example 4).
     """
 
     def test_compute_with_side_effect_ex_1(self):
@@ -67,6 +70,25 @@ class TestA(unittest.TestCase):
         result = a.compute()
         self.assertEqual(result, 'Side effect - including return value - '
                                  'specified')
+
+    @unittest.mock.patch('__main__.MyClassA.foo')
+    def test_compute_with_side_effect_ex_4(self, mock_foo):
+        """
+        An example showing how a list of differeing arguments can be returned
+        by the mock object.
+        
+        This can be useful to test a range of possible input values to an
+        interim function, or to check a function using a sensible value, an
+        upper bound edge case, and a lower bound edge case, for example.
+        """
+
+        mock_foo.side_effect = [100, 300, 500]
+
+        a = MyClassA()
+        
+        self.assertEqual(a.compute(), 400)
+        self.assertEqual(a.compute(), 800)
+        self.assertEqual(a.compute(), 1200)
 
 
 if __name__ == "__main__":
