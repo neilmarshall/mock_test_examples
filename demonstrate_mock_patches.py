@@ -58,7 +58,19 @@ class TestA(unittest.TestCase):
         result = a.compute()
 
         self.assertEqual(result, 850)
+    
+    # demonstrate patching using decorators
+    @unittest.mock.patch.object(MyClassA, 'foo2')
+    def test_compute_with_patch_foo2_alternate_approach(self, mock_foo2):
+        """Same as above but using patch.object instead."""
 
+        mock_foo2.return_value = 750
+
+        a = MyClassA()
+        result = a.compute()
+
+        self.assertEqual(result, 850)
+        
     # demonstrate the order in which patch decorators are applied
     @unittest.mock.patch('__main__.MyClassA.foo2')
     @unittest.mock.patch('__main__.MyClassA.foo')
